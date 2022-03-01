@@ -1,0 +1,1 @@
+web: gunicorn option_chain.wsgi --log-file -

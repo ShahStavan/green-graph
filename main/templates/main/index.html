@@ -1,0 +1,170 @@
+{% extends "main/base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Green GRAPH📈{% endblock %}</title>
+    {% block css %}
+    <style>
+      th{
+        text-align: center;
+        text-transform: uppercase;
+        font-family: 'Montserrat', sans-serif; 
+        font-weight: 500;
+      }
+      td{
+        text-align: center;
+        font-family: 'Montserrat', sans-serif; 
+        font-weight: 400;
+      }
+    </style>
+    {% endblock %}
+</head>
+<body>
+    {% block content %}
+    <div class="container mt-5">
+      <div class="row pt-4">
+        <div class="col-md-3">
+          <div class="d-flex align-items-start">
+            <div class="nav flex-column nav-pills " id="v-pills-tab" role="tablist" aria-orientation="vertical">
+              <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</button>
+              <button class="nav-link" id="v-pills-fii_dii-tab" data-bs-toggle="pill" data-bs-target="#v-pills-fii_dii" type="button" role="tab" aria-controls="v-pills-fii_dii" aria-selected="false">FII | DII Data</button>
+              <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Index_OI_Data</button>
+              <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Indice Data</button>
+            </div>
+          </div>
+          </div>
+          <div class="col-md-9">
+            <div class="tab-content " id="v-pills-tabContent">
+              <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                <nav class="navbar navbar-light bg-light">
+                  <div class="container-fluid">
+                    <form class="d-flex" method="POST">
+                      {% csrf_token %}
+                      <input class="form-control me-2" type="search" placeholder="Infosys" aria-label="Search" name="stock">
+                      <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                  </div>
+                </nav>
+
+                <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+                  <strong><div class="card-header text-primary bg-dark mb-3"><h2 class="card-title fs-2">QUOTE: {{ stock_info.symbol }}</strong></h2></div>
+                  <div class="card-body text-light">
+                    <!--<h3 class="card-title">{{ stock_info.companyName }} <em>({{ stockinfo.symbol}})</em><br/> -->
+                    <p class="card-text">
+                      
+                    </p>
+                  </div>
+              </div>
+              </div>
+              <div class="tab-pane fade" id="v-pills-fii_dii" role="tabpanel" aria-labelledby="v-pills-fii_dii-tab">
+                <div>
+                  <h2 class="card-title fs-2">FII/DII Data</h2>
+                  <p>{{ fii.index.0 }}</p>
+                    <div class="container">
+                      <table class="table">
+                        <th>{{ fii.columns.0 }}</th>
+                        <th>{{ fii.columns.1 }}</th>
+                        <th>{{ fii.columns.2 }}</th>
+                        <th>{{ fii.columns.3 }}</th>
+                        {% for i in fii.values %}
+                          <tr>
+                            <td>{{ i.0 }}</td>
+                            <td>{{ i.1 }}</td>
+                            <td>{{ i.2 }}</td>
+                            <td>{{ i.3 }}</td>
+                          </tr>
+                        {% endfor %}
+                      </table>
+
+                    </div>
+                    <div class="container">
+                      <table class="table">
+                        <th>{{ dii.columns.0 }}</th>
+                        <th>{{ dii.columns.1 }}</th>
+                        <th>{{ dii.columns.2 }}</th>
+                        <th>{{ dii.columns.3 }}</th>
+                        {% for i in dii.values %}
+                        
+                          <tr>
+                            <td>{{ i.0 }}</td>
+                            <td>{{ i.1 }}</td>
+                            <td>{{ i.2 }}</td>
+                            <td>{{ i.3 }}</td>
+                          </tr>
+                        {% endfor %}
+                      </table>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                <h5>NIFTY 50</h5>
+                <table class="table ">
+                  <th>{{ nifty.columns.0 }}</th>
+                  <th>{{ nifty.columns.1 }}</th>
+                  <th>{{ nifty.columns.7 }}</th>
+                  <th>{{ nifty.columns.8 }}</th>
+                  
+                  <th>{{ nifty.columns.25 }}</th>
+                  <th>{{ nifty.columns.26 }}</th>
+                  <th>{{ nifty.columns.29 }}</th>
+
+                  {% for i in nifty.values %}
+                    <tr>
+                      <td>{{ i.0 }}</td>
+                      <td>{{ i.1 }}</td>
+                      <td>{{ i.7 }}</td>
+                      <td>{{ i.8 }}</td>
+                      <td>{{ i.25 }}</td>
+                      <td>{{ i.26 }}</td>
+                      <td>{{ i.29 }}</td>
+                    </tr>
+                  {% endfor %}
+                  
+                </table>
+                <hr>
+                <h5>BANKNIFTY</h5>
+                <table class="table">
+                  <th>{{ banknifty.columns.0 }}</th>
+                  <th>{{ banknifty.columns.1 }}</th>
+                  <th>{{ banknifty.columns.7 }}</th>
+                  <th>{{ banknifty.columns.8 }}</th>
+                  <th>{{ banknifty.columns.25 }}</th>
+                  <th>{{ banknifty.columns.26 }}</th>
+                  <th>{{ banknifty.columns.29 }}</th>
+
+                  {% for i in banknifty.values %}
+                    <tr>
+                      <td>{{ i.0 }}</td>
+                      <td>{{ i.1 }}</td>
+                      <td>{{ i.7 }}</td>
+                      <td>{{ i.8 }}</td>
+                      <td>{{ i.25 }}</td>
+                      <td>{{ i.26 }}</td>
+                      <td>{{ i.29 }}</td>
+                    </tr>
+                  {% endfor %}
+                </table>
+              </div>
+              <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                
+              </div>
+            </div>
+          </div>
+        
+        </div>
+      </div>
+    </div>
+    
+        
+    {% endblock %}
+    {% block js %}
+    <script>
+     
+
+    </script>
+    {% endblock %}
+</body>
+</html>
