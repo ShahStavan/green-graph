@@ -1,1 +1,1 @@
-web: gunicorn option_chain.wsgi --log-file -
+web: gunicorn option_chain.wsgi --log-file - --log-level debug

@@ -6,5 +6,3 @@ urlpatterns = [
     path('',include('main.urls', namespace='main')),
 ]
 
-handler404 = 'main.views.error_404'
-handler500 = 'main.views.error_500'

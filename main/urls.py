@@ -18,3 +18,6 @@ urlpatterns = [
     path('logout/',auth_views.LogoutView.as_view(template_name='main/accounts/logout.html'),name='logout'),
     path('search/', views.requestSearch, name='search'),
 ]
+
+handler404 = 'main.views.error_404'
+handler500 = 'main.views.error_500'

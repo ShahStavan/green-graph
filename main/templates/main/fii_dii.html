@@ -210,12 +210,12 @@
                             <td>{{ i.0 }}</td>
                             <td>{{ i.1 }}</td>
                             <td>{{ i.2 }}</td>
-                            {% if i.3 > 0 %}
-                            <td class="text-success font-weight-bold">{{ i.3 }}</td>
+                            {% if i.3 < '0' %}
+                            <td class="text-danger font-weight-bold">{{ i.3 }}</td>
                             {% elif i.3 == 0 %}
                             <td class="text-dark font-weight-bold">{{ i.3 }}</td>
                             {% else %}
-                            <td class="text-danger font-weight-bold">{{ i.3 }}</td>
+                            <td class="text-success font-weight-bold">{{ i.3 }}</td>
                             {% endif %}
                           </tr>
                         {% endfor %}
@@ -234,7 +234,7 @@
                             <td>{{ i.0 }}</td>
                             <td>{{ i.1 }}</td>
                             <td>{{ i.2 }}</td>
-                            {% if i.3 > 0 %}
+                            {% if i.3 > '0' %}
                             <td class="text-success font-weight-bold">{{ i.3 }}</td>
                             {% elif i.3 == 0 %}
                             <td class="text-dark font-weight-bold">{{ i.3 }}</td>

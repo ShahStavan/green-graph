@@ -202,7 +202,7 @@
                                         <div class="stats-info">
                                             
                                             <h5 class="card-title">{{ nifty.Nifty }}
-                                                {% if nifty.Nifty_pchange < 0 %}
+                                                {% if nifty.Nifty_pchange < '0' %}
                                                 <span class="stats-change text-danger">
                                                     {{ nifty.Nifty_pchange }}%
                                                 </span>
@@ -213,7 +213,7 @@
                                             </h5>
                                             <p class="stats-text">NIFTY</p>
                                         </div>
-                                        {% if nifty.Nifty_pchange < 0 %}
+                                        {% if nifty.Nifty_pchange < '0' %}
                                             <div class="stats-icon change-danger">
                                                 <i class="material-icons">trending_down</i>
                                             </div>
@@ -230,7 +230,7 @@
                                     <div class="card-body">
                                         <div class="stats-info">
                                             <h5 class="card-title">{{ Banknifty.Banknifty }}
-                                                {% if Banknifty.Banknifty_pchange < 0 %}
+                                                {% if Banknifty.Banknifty_pchange < '0' %}
                                                 <span class="stats-change text-danger">
                                                     {{ Banknifty.Banknifty_pchange }}%
                                                 </span>
@@ -241,7 +241,7 @@
                                             </h5>
                                             <p class="stats-text">BANKNIFTY</p>
                                         </div>
-                                        {% if Banknifty.Banknifty_pchange < 0 %}
+                                        {% if Banknifty.Banknifty_pchange < '0' %}
                                             <div class="stats-icon change-danger">
                                                 <i class="material-icons">trending_down</i>
                                             </div>
