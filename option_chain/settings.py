@@ -135,3 +135,8 @@ EMAIL_USE_TLS = True
 
 EMAIL_HOST_USER = "greengraph07@gmail.com"
 EMAIL_HOST_PASSWORD = "green$graph$2022"
+
+# ie if Heroku server
+if 'DATABASE_URL' in os.environ:
+    import dj_database_url
+    DATABASES = {'default': dj_database_url.config()}
