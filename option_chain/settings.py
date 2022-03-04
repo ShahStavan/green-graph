@@ -111,7 +111,10 @@ USE_TZ = True
 STATIC_URL = 'static/'
 WHITENOISE_USE_FINDERS = True
 
-STATIC_ROOT = 'main/static/main'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
 
 
 # Default primary key field type
