@@ -17,5 +17,6 @@ urlpatterns = [
     path('news/',views.news,name='news'),
     path('logout/',auth_views.LogoutView.as_view(template_name='main/accounts/logout.html'),name='logout'),
     path('search/', views.requestSearch, name='search'),
-    path('404/$',django.views.defaults.page_not_found,name='404'),
+    
 ]
+

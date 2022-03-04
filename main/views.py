@@ -147,8 +147,9 @@ def index(request):
     Banknifty_data = {'Banknifty':Banknifty,'Banknifty_pchange':bank_pchange}
     nifty_data = {'Nifty':nifty,'Nifty_pchange':nifty_pchange}
     
-    #print(Banknifty_data)
-    #print(nifty_data)
+    
+    print(Banknifty_data)
+    print(nifty_data)
     
     #print(si.get_company_info('SBIN.NS'))
     
