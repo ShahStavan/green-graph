@@ -13,7 +13,7 @@ body.dark-theme {
 }
 
 .dark-theme .accordion-menu > li > a {
-    color: #ffffff;
+    color: #5E606E;
 }
 
 .dark-theme .accordion-menu > li > a:hover,
@@ -27,7 +27,7 @@ body.dark-theme {
 }
 
 .dark-theme .accordion-menu li.sidebar-title {
-    color: rgba(255, 255, 255, 1.0);
+    color: rgba(94, 96, 110, .5);
     opacity: 1;
 }
 
@@ -66,11 +66,11 @@ body.dark-theme {
 /* Page Header */
 
 .dark-theme .page-header .navbar ul.navbar-nav > li > a {
-    color: #ffffff;
+    color: #6c6e7a;
 }
 
 .dark-theme .page-header .navbar ul.navbar-nav > li > a:hover {
-    color: #ffffff;
+    color: #9fa0ab;
 }
 
 .dark-theme .page-header .navbar-search #nav-search {
@@ -111,7 +111,7 @@ body.dark-theme {
 
 .dark-theme .card .card-title,
 .dark-theme .card .card-header {
-    color: rgba(255, 255, 255, 1.0);
+    color: rgba(255,255,255,.4);
 }
 
 .dark-theme .card .card-header,
@@ -120,7 +120,7 @@ body.dark-theme {
 }
 
 .dark-theme .breadcrumb-item + .breadcrumb-item::before {
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255,255,255,.4);
 }
 
 .dark-theme .dropdown-menu {
@@ -952,10 +952,6 @@ body.dark-theme {
 .dark-theme .todo-list ul li a:hover {
     background: #323742;
     color: #808291;
-}
-.card-title {
-    color: #fff;
-    
 }
 
 @media (max-width: 1199px) {
