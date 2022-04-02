@@ -57,7 +57,7 @@
                             <a href="{% url 'main:news' %}"><i class="material-icons-outlined">account_circle</i>Profile</a>
                         </li>
                         <li>
-                            <a href="file-manager.html"><i class="material-icons">cloud_queue</i>File Manager</a>
+                            <a href="{% url 'main:stock_info' %}"><i class="material-icons">cloud_queue</i>File Manager</a>
                         </li>
                         <li>
                             <a href="calendar.html"><i class="material-icons-outlined">calendar_today</i>Calendar</a>
@@ -236,13 +236,16 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="navbar-search">
-                            <form>
-                                <div class="form-group">
-                                    <input type="text" name="search" id="nav-search" placeholder="Search...">
+                        {% if request.user.is_authenticated %}
+                            <div class="ui search">
+                                <div class="ui small input action input">
+                                    <input class="prompt" id="searchStock" type="text" placeholder="Search for stocks">
+                                    <div class="ui button" id="search" >Search<div>
+                                    
                                 </div>
-                            </form>
-                        </div>
+                                
+                            </div>
+		                {% endif %}
                     </nav>
                 </div>
                 <div class="page-content">

@@ -223,10 +223,21 @@ def news(request):
     
     return render(request, 'main/news.html', {'market':market,'User':request.user,'news':news})
 
-def stock_info(request,symbol):
+def stock_info(request,stock_name):
     market = nse_marketStatus()
-    stock_info = nse.info(symbol)
-    return render(request, 'main/stock_info.html', {'market':market,'stock_info':stock_info,'User':request.user})
+    
+    stock_info = si.get_quote_data(stock_name + ".NS")
+    stock_price = si.get_live_price(stock_name + ".NS")
+    balancesheet = si.get_balance_sheet(stock_name + ".NS")
+    balancesheet = dict(balancesheet)
+    balance = {}
+    for i in balancesheet.keys():
+        balance[i.date()] = dict(balancesheet[i])
+    
+    cashflow = si.get_cash_flow(stock_name + ".NS")
+    
+
+    return render(request, 'main/stock_info.html', {'market':market,'stock_info':stock_info,'User':request.user,'stock_name':stock_name,'stock_price':stock_price,'balance':balance})
 
 def requestSearch(request):
 	ticker = request.GET.get('query')
@@ -237,7 +248,7 @@ def requestSearch(request):
 	res = []
 	for i in resp:
 		name = i['ticker']
-		res.append({'ticker':i['name'] + ' - ' + i['ticker'], 'name':i['name'] + ' - ' + i['ticker'], 'url': f'/stock/{name}'})
+		res.append({'ticker':i['name'] + ' - ' + i['ticker'], 'name':i['name'] + ' - ' + i['ticker'], 'url': f'/stock_info/{name}'})
 	result['results'] = res
 	return JsonResponse(result, safe=False)
 

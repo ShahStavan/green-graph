@@ -34,7 +34,9 @@
         <link href="{% static 'main/css/connect.min.css' %}" rel="stylesheet">
         <link href="{% static 'main/css/dark_theme.css' %}" rel="stylesheet">
         <link href="{% static 'main/css/custom.css' %}" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"  />
         {% endblock %}
+        
     </head>
     <body>
         {% block content %}
@@ -60,9 +62,7 @@
                         <li>
                             <a href="{% url 'main:news' %}"><i class="material-icons-outlined">article</i>News</a>
                         </li>
-                        <li>
-                            <a href="file-manager.html"><i class="material-icons-outlined">candlestick_chart</i>Stocks</a>
-                        </li>
+                        
                         <li>
                             <a href="calendar.html"><i class="material-icons-outlined">calendar_today</i>IPO's</a>
                         </li>
@@ -157,15 +157,16 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="navbar-search">
-                            
-                                <div class="form-group search input d-flex flex-row justify-content-between">
-                                    <input type="text" id="nav-search" placeholder="Search...">
-                                    <button class="btn pt-4" type="submit" id="search"><i class="material-icons-outlined">search</i></button>
-                                    <div class="results"></div>
+                        {% if request.user.is_authenticated %}
+                            <div class="ui search">
+                                <div class="ui small input action input">
+                                    <input class="prompt" id="searchStock" type="text" placeholder="Search for stocks">
+                                    <div class="ui button" id="search" >Search<div>
+                                    
                                 </div>
-                            
-                        </div>
+                                
+                            </div>
+		                {% endif %}
                     </nav>
                 </div>
                 <div class="page-content">
@@ -352,6 +353,7 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="results"></div>
                         <!--
                             <div class="row">
                             <div class="col-lg-12">
@@ -462,32 +464,38 @@
         <script src="{% static 'main/plugins/blockui/jquery.blockUI.js' %}"></script>
         <script src="{% static 'main/plugins/flot/jquery.flot.min.js' %}"></script>
         <script src="{% static 'main/plugins/flot/jquery.flot.time.min.js' %}"></script>
-        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js" />
         <script src="{% static 'main/plugins/flot/jquery.flot.resize.min.js' %}"></script>
-        
         <script src="{% static 'main/js/pages/dashboard.js' %}"></script>
+        {% if request.user.is_authenticated %}
         <script>
-            $('.navbar-search').search({
-                    apiSettings: {
-                        url: '/search/?query={query}'
-                    },
-                    fields: {
-                        results: 'results',
-                        title: 'name',
-                        action: 'url',
-                    },
-                    minCharacters: 3
-                })
-                ;
-            const searchStock = document.querySelector("#nav-search");
-            const search = document.querySelector("#search");
-            search.addEventListener('click', function (e) {
-                if (searchStock.value !== '') {
-                    window.location.href = '/stock/' + searchStock.value;
-                }
-            });
-            console.log(searchStock.value);
+	
+		$('.ui.search')
+			.search({
+				apiSettings: {
+					url: '/search/?query={query}'
+				},
+				fields: {
+					results: 'results',
+					title: 'name',
+					action: 'url',
+				},
+				minCharacters: 3
+			})
+			;
+		const searchStock = document.querySelector("#searchStock");
+		const search = document.querySelector("#search");
+		search.addEventListener('click', function (e) {
+			if (searchStock.value !== '') {
+				window.location.href = '/stock_info/' + searchStock.value;
+			}
+		});
+		console.log(searchStock.value);
+	
+	
         </script>
+        {% endif %}
+   
         {% endblock %}
     </body>
 </html>

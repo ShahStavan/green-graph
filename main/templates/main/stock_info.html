@@ -1,0 +1,472 @@
+{% load static %}
+{% load indian_numbers_tags %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Responsive Admin Dashboard Template">
+        <meta name="keywords" content="admin,dashboard">
+        <meta name="author" content="stacks">
+        <!-- The above 6 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        
+        <!-- Title -->
+        <title>Green Graph</title>
+        {% block css %}
+        <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Playfair+Display:wght@500&display=swap" rel="stylesheet"> 
+
+    <!--Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
+        <link href="{% static 'main/plugins/bootstrap/css/bootstrap.min.css' %}" 
+        <link href="{% static 'main/plugins/font-awesome/css/all.min.css' %}" rel="stylesheet">
+
+      
+        <!-- Theme Styles -->
+        <link href="{% static 'main/css/connect.min.css' %}" rel="stylesheet">
+        <link href="{% static 'main/css/dark_theme.css' %}" rel="stylesheet">
+        <link href="{% static 'main/css/custom.css' %}" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <style>
+            .title{
+                font-family: 'Montserrat', sans-serif;
+                font-size: 14px;
+                font-weight: 700;
+                color: rgb(116, 35, 182);
+                margin-bottom: 0px;
+            }
+        </style>
+        {% endblock %}
+    </head>
+    <body>
+        {% block content %}
+        <div class='loader'>
+            <div class='spinner-grow text-light' role='status'>
+                <span class='sr-only'>Loading...</span>
+            </div>
+        </div>
+        <div class="connect-container align-content-stretch d-flex flex-wrap">
+            <div class="page-sidebar">
+                <div class="logo-box"><a href="/index/" class="logo-text">GREEN GRAPH</a><a href="#" id="sidebar-close"><i class="material-icons">close</i></a> <a href="#" id="sidebar-state"><i class="material-icons">adjust</i><i class="material-icons compact-sidebar-icon">panorama_fish_eye</i></a></div>
+                <div class="page-sidebar-inner slimscroll">
+                    <ul class="accordion-menu">
+                        <li class="sidebar-title">
+                            Apps
+                        </li>
+                        <li class="active-page">
+                            <a href="/index/" class="active"><i class="material-icons-outlined">dashboard</i>Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'main:fii_dii' %}"><i class="material-icons-outlined">assessment</i>FII | DII Data </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'main:news' %}"><i class="material-icons-outlined">article</i>News</a>
+                        </li>
+
+                        <li>
+                            <a href="calendar.html"><i class="material-icons-outlined">calendar_today</i>IPO's</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'main:events' %}"><i class="material-icons-outlined">event</i>Events</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'main:block_deals' %}"><i class="material-icons-outlined">monetization_on</i>Block Deals</a>
+                        </li>
+                        <li class="sidebar-title">
+                            Analyze Data
+                        </li>
+                        <!--
+                            <li>
+                            <a href="#"><i class="material-icons">timeline</i>Index</a>
+                            <ul class="sub-menu">
+                                <li>
+                                    <a href="styles-typography.html">Learn Option Chain</a>
+                                </li>
+                                <li>
+                                    <a href="styles-code.html">Open Interest</a>
+                                </li>
+                                <li>
+                                    <a href="styles-tables.html">Tables</a>
+                                </li>
+                                <li>
+                                    <a href="styles-icons.html">Icons</a>
+                                </li>
+                            </ul>
+                        </li>
+                        -->
+                        <li>
+                            <a href="{% url 'main:optionchain' %}"><i class="material-icons">swap_vert</i>Option Chain</a>
+                        </li>
+                        <li>
+                            
+                            <a href="charts.html"><i class="material-icons">upgrade</i>Open Interest</a>
+                        </li>
+                        <li>
+                            <a href="charts.html"><i class="material-icons">show_chart</i>IV Chart</a>
+                        </li>
+                        <li>
+                            <a href="charts.html"><i class="material-icons">bar_chart</i>Technical Signals</a>
+                        </li>
+                        <li>
+                            <a href="forms.html"><i class="material-icons">book</i>Learn OC</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+            <div class="page-container">
+                <div class="page-header">
+                    <nav class="navbar navbar-expand">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <ul class="navbar-nav">
+                            <li class="nav-item small-screens-sidebar-link">
+                                <a href="#" class="nav-link"><i class="material-icons-outlined">menu</i></a>
+                            </li>
+                            <li class="nav-item nav-profile dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src="{% static 'main/images/avatars/profile-image-2.png' %}" alt="profile image">
+                                    <span>{{ User.username }}</span><i class="material-icons dropdown-icon">keyboard_arrow_down</i>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#">Calendar<span class="badge badge-pill badge-info float-right">2</span></a>
+                                    <a class="dropdown-item" href="#">Settings &amp Privacy</a>
+                                    <a class="dropdown-item" href="#">Switch Account</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="{% url 'main:logout' %}">Log out</a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link"><i class="material-icons-outlined">notifications</i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link" id="dark-theme-toggle"><i class="material-icons-outlined">brightness_2</i><i class="material-icons">brightness_2</i></a>
+                            </li>
+                        </ul>
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link"></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link"></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link"></a>
+                                </li>
+                            </ul>
+                        </div>
+                        {% if request.user.is_authenticated %}
+                            <div class="ui search">
+                                <div class="ui action input">
+                                    <input class="prompt" id="searchStock" type="text" placeholder="Search for stocks">
+                                    <div class="ui secondary button" id="search">Search</div>
+                                </div>
+                            </div>
+		                {% endif %}
+                        
+                    </nav>
+                </div>
+                <div class="page-content">
+                    <div class="page-info">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#">Apps</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                            </ol>
+                        </nav>
+                        <div class="page-options">
+                            <a href="#" class="btn btn-outline-dark text-uppercase">Upgrade</a>
+                        </div>
+                    </div>
+                    <div class="card bg-light" style="max-width: 20rem;height: 50px;">
+                        <div class="card-header">
+                        
+                            {% if market == "Closed" %}
+                            <p class="card-title text-danger">Market Closed</p>
+                            {% elif market == "Open" %}
+                            <p class="card-title text-success">Market Open</p>
+                            {% else %}
+                            <p class="card-title text-danger">Unable to Fetch Market Status</p>
+                            {% endif %}
+
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="main-wrapper">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="header bg-dark text-light" style="height: 50px; padding: 14px 16px;font-size: 1.3rem;font-weight: 700; border-radius: 5px; ">{{ stock_info.shortName }} ( {{ stock_name }} )</div>
+                                <div class="row d-flex justify-content-around">
+                                    <div class="col-lg-4">
+                                        <div class="container">
+                                            <div class="card-body">
+                                                {% if stock_info.regularMarketChangePercent < 0 %}
+                                                <h3 class="card-text ">{{ stock_price|floatformat:2 }} <span class="text-danger">({{ stock_info.regularMarketChangePercent|floatformat:2 }} %)</span></h3>
+                                                {% else %}
+                                                <h3 class="card-text">{{ stock_price|floatformat:2 }} <span class="text-success">( {{ stock_info.regularMarketChangePercent|floatformat:2  }} %)</span></h3>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                            
+                            
+                                    <div class="col-lg-4">
+                                        <div class="container">
+                                            <div class="card-body">
+                                                <h3>52W Low: {{ stock_info.fiftyTwoWeekLow }}</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="container">
+                                            <div class="card-body">
+                                                <h3>52W High: {{ stock_info.fiftyTwoWeekHigh }}</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                            
+                            
+                            
+                                </div>
+                                <hr>
+                                
+                                <h2>BalanceSheet</h2>
+                                <table class="ui stripped purple unstackable bottom attached table" style="display: block;overflow-x:scroll;">
+                                    <tr>
+                                        <th></th>
+                                    {% for i in balance.keys %}
+                                            <th>{{ i }}</th>
+                                    {% endfor %}
+                                    </tr>
+                                    <tr> 
+                                        <td  class="title">intangibleAssets</td>
+                                    {% for i in balance.values %}
+                                            <td>{{ i.intangibleAssets|floatword_indian }}</td>
+                                    {% endfor %}
+                                    </tr>
+                                    <tr> 
+                                        <td  class="title">totalAssets</td>
+                                    {% for i in balance.values %}
+                                            <td>{{ i.totalAssets|floatword_indian }}</td>
+                                    {% endfor %}
+                                    </tr>
+                                    <tr> 
+                                        <td  class="title">totalCurrentAssets</td>
+                                    {% for i in balance.values %}
+                                            <td>{{ i.totalCurrentAssets|floatword_indian }}</td>
+                                    {% endfor %}
+                                    </tr>
+                                    <tr> 
+                                        <td  class="title">capitalSurplus</td>
+                                    {% for i in balance.values %}
+                                            <td>{{ i.capitalSurplus|floatword_indian }}</td>
+                                    {% endfor %}
+                                    </tr>
+                                    <tr>
+                                        <td  class="title">totalLiab</td>
+                                    {% for i in balance.values %}
+                                            <td>{{ i.totalLiab|floatword_indian }}</td>
+                                    {% endfor %}
+                                    </tr>
+                                    <tr>
+                                        <td  class="title">totalStockholderEquity</td>
+                                    {% for i in balance.values %}
+                                            <td>{{ i.totalStockholderEquity|floatword_indian }}</td>
+                                    {% endfor %}
+                                    </tr>
+                                    <tr>
+                                        <td  class="title">minorityInterest</td>
+                                    {% for i in balance.values %}
+                                            <td>{{ i.minorityInterest|floatword_indian }}</td>
+                                    {% endfor %}
+                                    </tr>
+                                    <tr>
+                                        <td  class="title">deferredLongTermLiab</td>
+                                    {% for i in balance.values %}
+                                            <td>{{ i.deferredLongTermLiab|floatword_indian }}</td>
+                                    {% endfor %}
+                                    </tr>
+                                    <tr>
+                                        <td  class="title">otherCurrentLiab</td>
+                                    {% for i in balance.values %}
+                                            <td>{{ i.otherCurrentLiab|floatword_indian }}</td>
+                                    {% endfor %}
+                                    </tr>
+                                    <tr>
+                                        <td  class="title">otherCurrentAssets</td>
+                                    {% for i in balance.values %}
+                                            <td>{{ i.otherCurrentAssets|floatword_indian }}</td>
+                                    {% endfor %}
+                                    </tr>
+                                    <tr>
+                                        <td  class="title">otherLiab</td>
+                                    {% for i in balance.values %}
+                                            <td>{{ i.otherLiab|floatword_indian }}</td>
+                                    {% endfor %}
+                                    </tr>
+                                    <tr>
+                                        <td  class="title">treasuryStock</td>
+                                    {% for i in balance.values %}
+                                            <td>{{ i.treasuryStock|floatword_indian }}</td>
+                                    {% endfor %}
+                                    </tr>
+                                    <tr>
+                                        <td  class="title">otherAssets</td>
+                                    {% for i in balance.values %}
+                                            <td>{{ i.otherAssets|floatword_indian }}</td>
+                                    {% endfor %}
+                                    </tr>
+                                    <tr>
+                                        <td  class="title">cash</td>
+                                    {% for i in balance.values %}
+                                            <td>{{ i.cash|floatword_indian }}</td>
+                                    {% endfor %}
+                                    </tr>
+                                    <tr>
+                                        <td  class="title">totalCurrentLiabilities</td>
+                                    {% for i in balance.values %}
+                                            <td>{{ i.totalCurrentLiabilities|floatword_indian }}</td>
+                                    {% endfor %}
+                                    </tr>
+                                    <tr>
+                                        <td  class="title">deferredLongTermAssetCharges</td>
+                                    {% for i in balance.values %}
+                                            <td>{{ i.deferredLongTermAssetCharges|floatword_indian }}</td>
+                                    {% endfor %}
+                                    </tr>
+                                    <tr>
+                                        <td  class="title">shortLongTermDebt</td>
+                                    {% for i in balance.values %}
+                                            <td>{{ i.shortLongTermDebt|floatword_indian }}</td>
+                                    {% endfor %}
+                                    </tr>
+                                    <tr>
+                                        <td  class="title">otherStockholderEquity</td>
+                                    {% for i in balance.values %}
+                                            <td>{{ i.otherStockholderEquity|floatword_indian }}</td>
+                                    {% endfor %}
+                                    </tr>
+                                    <tr>
+                                        <td  class="title">propertyPlantEquipment</td>
+                                    {% for i in balance.values %}
+                                            <td>{{ i.propertyPlantEquipment|floatword_indian }}</td>
+                                    {% endfor %}
+                                    </tr>
+                                    <tr>
+                                        <td  class="title">goodwill</td>
+                                    {% for i in balance.values %}
+                                            <td>{{ i.goodWill|floatword_indian }}</td>
+                                    {% endfor %}
+                                    </tr>
+                                    <tr>
+                                        <td  class="title">totalCurrentAssets</td>
+                                    {% for i in balance.values %}
+                                            <td>{{ i.totalCurrentAssets|floatword_indian }}</td>
+                                    {% endfor %}
+                                    </tr>
+                                    <tr>
+                                        <td  class="title">longTermInvestments</td>
+                                    {% for i in balance.values %}
+                                            <td>{{ i.longTermInvestments|floatword_indian }}</td>
+                                    {% endfor %}
+                                    </tr>
+                                    <tr>
+                                        <td  class="title">netTangibleAssets</td>
+                                    {% for i in balance.values %}
+                                            <td>{{ i.netTangibleAssets|floatword_indian }}</td>
+                                    {% endfor %}
+                                    </tr>
+                                    <tr>
+                                        <td  class="title">netReceivables</td>
+                                    {% for i in balance.values %}
+                                            <td>{{ i.netReceivables|floatword_indian }}</td>
+                                    {% endfor %}
+                                    </tr>
+                                    <tr>
+                                        <td  class="title">longTermDebt</td>
+                                    {% for i in balance.values %}
+                                            <td>{{ i.longTermDebt|floatword_indian }}</td>
+                                    {% endfor %}
+                                    </tr>
+                                    <tr>
+                                        <td  class="title">inventory</td>
+                                    {% for i in balance.values %}
+                                            <td>{{ i.inventory|floatword_indian }}</td>
+                                    {% endfor %}
+                                    </tr>
+                                    
+                               
+                                </table>
+                                <h2>CashFlows</h2>
+                                
+                        </div>
+                    </div>
+                    <div class="results"></div> 
+                <div class="page-footer">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <span class="footer-text"> © 2022 Copyright: GREEN GRAPH</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+        {% endblock %}
+        
+        <!-- Javascripts -->
+        {% block js %}
+        <script src="{% static 'main/plugins/jquery/jquery-3.4.1.min.js' %}"></script>
+        <script src="{% static 'main/plugins/bootstrap/popper.min.js' %}"></script>
+        <script src="{% static 'main/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'main/plugins/jquery-slimscroll/jquery.slimscroll.min.js' %}"></script>
+        <script src="{% static 'main/js/connect.min.js' %}"></script>
+        <script src="{% static 'main/plugins/jquery-sparkline/jquery.sparkline.min.js' %}"></script>
+        <script src="{% static 'main/plugins/blockui/jquery.blockUI.js' %}"></script>
+        <script src="{% static 'main/plugins/flot/jquery.flot.min.js' %}"></script>
+        <script src="{% static 'main/plugins/flot/jquery.flot.time.min.js' %}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js" />
+        <script src="{% static 'main/plugins/flot/jquery.flot.resize.min.js' %}"></script>
+        <script src="{% static 'main/js/pages/dashboard.js' %}"></script>
+        {% if request.user.is_authenticated %}
+        <script>
+
+		$('.ui.search')
+			.search({
+				apiSettings: {
+					url: '/search/?query={query}'
+				},
+				fields: {
+					results: 'results',
+					title: 'name',
+					action: 'url',
+				},
+				minCharacters: 3
+			})
+			;
+		const searchStock = document.querySelector("#searchStock");
+		const search = document.querySelector("#search");
+		search.addEventListener('click', function (e) {
+			if (searchStock.value !== '') {
+				window.location.href = '/stock_info/' + searchStock.value;
+			}
+		});
+		console.log(searchStock.value);
+	
+	
+        </script>
+        {% endif %}
+        {% endblock %}
+    </body>
+</html>

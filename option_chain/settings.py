@@ -16,7 +16,7 @@ SECRET_KEY = 'django-insecure-4^b@-z80f&!#3+#6-m9hgc9cd(2!^ml3jxfy3f3y-4%o^wmkpr
 #DEBUG = True
 DEBUG = False
 
-ALLOWED_HOSTS = ['green-graph.herokuapp.com','127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -29,7 +29,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
-    'main.apps.MainConfig'
+    'main.apps.MainConfig',
+    'indian_numbers',
 ]
 
 MIDDLEWARE = [
@@ -136,5 +137,6 @@ EMAIL_USE_TLS = True
 
 EMAIL_HOST_USER = "greengraph07@gmail.com"
 EMAIL_HOST_PASSWORD = "green$graph$2022"
+USE_THOUSAND_SEPARATOR = True
 
 django_heroku.settings(locals())
